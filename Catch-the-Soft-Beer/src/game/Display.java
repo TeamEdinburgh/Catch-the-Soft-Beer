@@ -5,8 +5,8 @@ import java.awt.*;
 
 
 public class Display {
-    private final int WIDTH = 730;
-    private final int HEIGHT = 730;
+    private final int WIDTH = 700;
+    private final int HEIGHT = 700;
     private String name;
 
 
