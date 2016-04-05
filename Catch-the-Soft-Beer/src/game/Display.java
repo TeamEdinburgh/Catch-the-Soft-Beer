@@ -1,3 +1,5 @@
+package game;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,6 +17,7 @@ public class Display {
     }
 
     private void init(String name){
+        this.name = name;
         this.frame = new JFrame(name);
         this.frame.setVisible(true);
         this.frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));

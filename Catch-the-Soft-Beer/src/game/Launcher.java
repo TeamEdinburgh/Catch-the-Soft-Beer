@@ -1,6 +1,6 @@
-import javax.swing.*;
+package game;
 
-public class Game {
+public class Launcher {
     public static void main(String[] args) {
         new Display("Catch-the-Soft-Beer!");
     }
