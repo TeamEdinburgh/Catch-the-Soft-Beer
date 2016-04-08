@@ -3,6 +3,9 @@ package game;
 import javax.swing.*;
 import java.awt.*;
 
+import static java.awt.Color.gray;
+import static java.awt.Color.red;
+
 
 public class Display {
     private final int WIDTH = 700;
@@ -11,9 +14,15 @@ public class Display {
 
     private JFrame frame;
     private Canvas canvas;
+    private Graphics g;
 
     public Display(String name){
+
         init(name);
+    }
+
+    public Canvas getCanvas() {
+      return canvas;
     }
 
     private void init(String name){
@@ -24,6 +33,8 @@ public class Display {
         this.frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         this.frame.setFocusable(true);
+        this.frame.setLocationRelativeTo(null);
+        this.frame.setResizable(false);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         this.canvas = new Canvas();
