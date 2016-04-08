@@ -1,6 +1,7 @@
 package game;
 
 import game.Display;
+import gfx.ImageLoader;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -36,13 +37,23 @@ public class Game implements Runnable {
         }
 
         this.g = this.bs.getDrawGraphics();
+
+        //Begin Drawing
+        g.drawImage(ImageLoader.loadImage("/textures/SoftUni-bg.jpg"), 0, 0, null);
+        g.drawImage(ImageLoader.loadImage("/textures/softuniBeer.png"), 500, 50, null);
+        g.drawImage(ImageLoader.loadImage("/textures/softuniBeer.png"), 300, 100, null);
+        g.drawImage(ImageLoader.loadImage("/textures/softuniBeer.png"), 250, 150, null);
+        g.drawImage(ImageLoader.loadImage("/textures/softuniBeer.png"), 400, 20, null);
+        g.drawImage(ImageLoader.loadImage("/textures/softuniBeer.png"), 350, 200, null);
+        g.drawImage(ImageLoader.loadImage("/textures/wizard.png"), 200, 420, null);
+
         g.setColor(Color.red);
         g.drawLine(150, 700 , 150, 0);
 
         g.setColor(Color.red);
-        g.drawLine(550, 700 , 550, 0);
+        g.drawLine(550, 700 , 550, 50);
 
-        g.setColor(Color.BLACK);
+        g.setColor(Color.red);
         g.drawString("Score", 600, 25);
 
         char [] score = { 'S', 'c', 'o', 'r', 'e'};
@@ -51,6 +62,7 @@ public class Game implements Runnable {
         Font f = new Font("Dialog", Font.BOLD, 12);
         g.setFont(f);
         g.drawString("Score", 600, 75);
+        //End Drawing
 
         this.g.dispose();
         this.bs.show();
