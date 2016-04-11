@@ -2,8 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f327f762-a7f8-430d-8817-b7fbf616f924" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/.idea/libraries/res.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/Catch-the-Soft-Beer.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/out/production/Catch-the-Soft-Beer/game/Display.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/out/production/Catch-the-Soft-Beer/game/Game.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/out/production/Catch-the-Soft-Beer/game/Launcher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/out/production/Catch-the-Soft-Beer/gfx/ImageLoader.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/res" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/src/game/Display.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/src/game/Game.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/src/game/Launcher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/Catch-the-Soft-Beer/src/gfx/ImageLoader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/README.md" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res" afterPath="$PROJECT_DIR$/res" />
     </list>
     <ignored path="Catch-the-Soft-Beer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -516,7 +535,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
