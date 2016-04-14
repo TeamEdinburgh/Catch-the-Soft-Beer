@@ -1,6 +1,5 @@
 package com.game.src;
 
-import com.sun.deploy.ui.ImageLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +10,7 @@ import java.io.IOException;
 
 public class Game extends Canvas implements Runnable{
 
-      public static final int WIDHT = 800;
+      public static final int WIDTH = 800;
       public static final int HEIGHT = 640;
       public static final int SCALE = 2;
       public final String TITLE = "Catch the beer";
@@ -24,13 +23,16 @@ public class Game extends Canvas implements Runnable{
      private BufferedImage background = null;
 
     private Player p;
+    private Bottles b;
+    private Controller c;
+    private Textures tex;
 
 
     public void init(){
         requestFocus();
         BufferedImageLoader loader = new BufferedImageLoader();
         try {
-            spriteSheet = loader.loadImage("/wizzard.png");
+            spriteSheet = loader.loadImage("/Sprite.png");
             background = loader.loadImage("/back2.png");
         }catch (IOException e){
             e.printStackTrace();
@@ -38,7 +40,11 @@ public class Game extends Canvas implements Runnable{
 
         addKeyListener(new KeyInput(this));
 
-     p = new Player(300,410,this);
+        tex = new Textures(this);
+
+        p = new Player(300,410, tex);
+        b = new Bottles( 100, 100,tex);
+        c = new Controller(this, tex);
 
     }
     private synchronized void start(){
@@ -77,7 +83,7 @@ public class Game extends Canvas implements Runnable{
         while (running){
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
-            lastTime = now;;
+            lastTime = now;
 
             if (delta >= 1){
                 tick();
@@ -98,7 +104,9 @@ public class Game extends Canvas implements Runnable{
     }
 
     public void tick(){
+
         p.tick();
+        c.tick();
     }
     public void render(){
         BufferStrategy bs  = this.getBufferStrategy();
@@ -113,6 +121,7 @@ public class Game extends Canvas implements Runnable{
         g.drawImage(background, -150,-40,null);
 
         p.render(g);
+        c.render(g);
             //////////////////////////////
 
         g.dispose();
@@ -144,7 +153,7 @@ public class Game extends Canvas implements Runnable{
     public static void main (String args []){
         Game game = new Game();
 
-        game.setPreferredSize(new Dimension(WIDHT ,HEIGHT));
+        game.setPreferredSize(new Dimension(WIDTH ,HEIGHT));
         game.setMaximumSize(new Dimension(WIDTH ,HEIGHT));
         game.setMinimumSize(new Dimension(WIDTH ,HEIGHT));
 
@@ -161,6 +170,7 @@ public class Game extends Canvas implements Runnable{
     }
     public BufferedImage getSpriteSheet(){
         return spriteSheet;
+
     }
 
 }
