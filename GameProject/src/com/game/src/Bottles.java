@@ -3,7 +3,7 @@ package com.game.src;
 import java.awt.*;
 import java.util.Random;
 
-public class Bottles {
+public class Bottles implements Entity {
     private double x;
     private double y;
     Random r = new Random();
@@ -33,6 +33,9 @@ public class Bottles {
 
     public double getY(){
         return y;
+    }
+    public double getX(){
+        return x;
     }
 
 }

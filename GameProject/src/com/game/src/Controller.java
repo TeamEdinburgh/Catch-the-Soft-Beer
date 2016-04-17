@@ -5,11 +5,11 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Controller {
-    private LinkedList<Bottles> b = new LinkedList<Bottles>();
+    private LinkedList<Entity> e = new LinkedList<Entity>();
 
+    Entity ent;
     Random r = new Random();
 
-    Bottles TempBottles;
     Game game;
     Textures tex;
 
@@ -17,34 +17,32 @@ public class Controller {
         this.game = game;
         this.tex = tex;
 
-            addBottles(new Bottles( r.nextInt(Game.WIDTH * Game.SCALE), 0, tex));
+            addEntitiy(new Bottles( r.nextInt(Game.WIDTH * Game.SCALE), 0, tex));
 
     }
 
     public void tick(){
-        for (int i = 0; i < b.size(); i++) {
-            TempBottles = b.get(i);
+        for (int i = 0; i < e.size(); i++) {
+            ent = e .get(i);
 
-            if (TempBottles.getY() > 640) {
-                removeBottles(TempBottles);
-            }
-            
-            TempBottles.tick();
+            ent.tick();
         }
     }
 
     public void render(Graphics g){
-        for (int i = 0; i < b.size(); i++) {
-            TempBottles = b.get(i);
-            TempBottles.render(g);
+        for (int i = 0; i < e.size(); i++) {
+            ent = e .get(i);
+
+            ent.render(g);
         }
     }
 
-    public void addBottles(Bottles block){
-        b.add(block);
+    public void addEntitiy (Entity block){
+        e.add(block);
     }
 
-    public void removeBottles(Bottles block){
-        b.remove(block);
+    public void removeEntity (Entity block){
+        e.add(block);
     }
+
 }
