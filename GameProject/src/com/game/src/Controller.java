@@ -15,17 +15,17 @@ public class Controller {
     EntityB entb;
     Random r = new Random();
 
-    Game game;
+    private Game game;
     Textures tex;
 
-    public Controller(Game game, Textures tex){
+    public Controller( Textures tex, Game game){
         this.game = game;
         this.tex = tex;
     }
 
     public void createBottles(int beerCount){
         for (int i = 0; i < beerCount; i++) {
-            addEntity(new Bottles(r.nextInt(640), -10, tex));
+            addEntity(new Bottles(r.nextInt(640), -10, tex, this, game));
         }
     }
 

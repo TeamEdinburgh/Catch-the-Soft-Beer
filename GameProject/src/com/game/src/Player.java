@@ -13,6 +13,7 @@ public class Player extends GameObject implements EntityA {
     private BufferedImage player;
     private Game game;
 
+
     private Textures tex;
 
     public Player(double x , double y, Textures tex, Game game){
@@ -30,10 +31,6 @@ public class Player extends GameObject implements EntityA {
 
         if (x >= 640)
             x = 640;
-
-        if(Physics.Collision(this, game.eb)){
-            System.out.println("Collision");
-        }
 
     }
 

@@ -30,7 +30,6 @@ public class Game extends Canvas implements Runnable{
     private int beerCollected = 0;
 
     private Player p;
-    private Bottles b;
     private Controller c;
     private Textures tex;
 
@@ -50,8 +49,7 @@ public class Game extends Canvas implements Runnable{
         tex = new Textures(this);
 
         p = new Player(300,410, tex, this);
-        b = new Bottles( 100, 100,tex);
-        c = new Controller(this, tex);
+        c = new Controller(tex, this);
 
         ea = c.getEntityA();
         eb = c.getEntityB();
@@ -121,6 +119,12 @@ public class Game extends Canvas implements Runnable{
 
         p.tick();
         c.tick();
+
+        if(beerCollected >= beerCount){
+            beerCount += 2;
+            beerCollected = 0;
+            c.createBottles(beerCount);
+        }
     }
     public void render(){
         BufferStrategy bs  = this.getBufferStrategy();
