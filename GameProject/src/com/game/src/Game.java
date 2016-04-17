@@ -12,7 +12,7 @@ public class Game extends Canvas implements Runnable{
 
       public static final int WIDTH = 800;
       public static final int HEIGHT = 640;
-      public static final int SCALE = 2;
+      public static final int SCALE = 1;
       public final String TITLE = "Catch the beer";
 
       private boolean running = false;

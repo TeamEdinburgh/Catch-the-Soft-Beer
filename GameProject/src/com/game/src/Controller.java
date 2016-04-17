@@ -2,9 +2,12 @@ package com.game.src;
 
 import java.awt.*;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Controller {
     private LinkedList<Bottles> b = new LinkedList<Bottles>();
+
+    Random r = new Random();
 
     Bottles TempBottles;
     Game game;
@@ -14,9 +17,8 @@ public class Controller {
         this.game = game;
         this.tex = tex;
 
-        for (int i = 0; i < Game.WIDTH* Game.SCALE; i++) {
-            addBottles(new Bottles( i, 0, tex));
-        }
+            addBottles(new Bottles( r.nextInt(Game.WIDTH * Game.SCALE), 0, tex));
+
     }
 
     public void tick(){

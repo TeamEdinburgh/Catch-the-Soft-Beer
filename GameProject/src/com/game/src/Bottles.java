@@ -1,11 +1,13 @@
 package com.game.src;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class Bottles {
     private double x;
     private double y;
+    Random r = new Random();
+
     private Textures tex;
 
 
@@ -16,14 +18,21 @@ public class Bottles {
     }
 
     public void tick(){
-        y += 5;
+        y += 3;
+
+        if ( y > (Game.HEIGHT * Game.SCALE)){
+            y = 0;
+            x = r.nextInt(Game.WIDTH * Game.SCALE);
+        }
     }
 
     public void render(Graphics g){
+
         g.drawImage(tex.bottles, (int) x, (int) y, null);
     }
 
     public double getY(){
         return y;
     }
+
 }
