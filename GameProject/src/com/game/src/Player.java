@@ -38,7 +38,7 @@ public class Player extends GameObject implements EntityA {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, 300, 410);
+        return new Rectangle((int)x, (int)y, 175, 200);
     }
 
     public void render(Graphics g){

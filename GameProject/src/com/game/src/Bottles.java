@@ -22,7 +22,7 @@ public class Bottles extends GameObject implements EntityB {
         if ( y > (Game.HEIGHT * Game.SCALE)){
             speed = r.nextInt(3) + 1;
             x = r.nextInt(Game.WIDTH * Game.SCALE);
-            y = 0;
+            y = -10;
         }
     }
 
@@ -32,7 +32,7 @@ public class Bottles extends GameObject implements EntityB {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, 64, 64);
+        return new Rectangle((int)x, (int)y, 20, 50);
     }
 
     public double getY(){
