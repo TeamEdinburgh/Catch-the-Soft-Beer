@@ -9,7 +9,7 @@ public class Bottles implements Entity {
     Random r = new Random();
 
     private Textures tex;
-
+    private int speed = r.nextInt(3) + 1;
 
     public Bottles (double x, double y, Textures tex){
         this.x = x;
@@ -18,11 +18,12 @@ public class Bottles implements Entity {
     }
 
     public void tick(){
-        y += 3;
+        y += speed;
 
         if ( y > (Game.HEIGHT * Game.SCALE)){
-            y = 0;
+            speed = r.nextInt(3) + 1;
             x = r.nextInt(Game.WIDTH * Game.SCALE);
+            y = 0;
         }
     }
 

@@ -22,6 +22,9 @@ public class Game extends Canvas implements Runnable{
      private BufferedImage spriteSheet = null;
      private BufferedImage background = null;
 
+    private int beerCount = 10;
+    private int beerCollected = 0;
+
     private Player p;
     private Bottles b;
     private Controller c;
@@ -38,13 +41,15 @@ public class Game extends Canvas implements Runnable{
             e.printStackTrace();
         }
 
-        addKeyListener(new KeyInput(this));
-
         tex = new Textures(this);
 
         p = new Player(300,410, tex);
         b = new Bottles( 100, 100,tex);
         c = new Controller(this, tex);
+
+        addKeyListener(new KeyInput(this));
+
+        c.createBottles(beerCount);
 
     }
     private synchronized void start(){
@@ -171,6 +176,25 @@ public class Game extends Canvas implements Runnable{
     public BufferedImage getSpriteSheet(){
         return spriteSheet;
 
+    }
+
+    public int getBeerCount() {
+
+        return beerCount;
+    }
+
+    public void setBeerCount(int beerCount) {
+
+        this.beerCount = beerCount;
+    }
+
+    public int getBeerCollected() {
+
+        return beerCollected;
+    }
+
+    public void setBeerCollected(int beerCollected) {
+        this.beerCollected = beerCollected;
     }
 
 }

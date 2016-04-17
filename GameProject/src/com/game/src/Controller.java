@@ -16,9 +16,12 @@ public class Controller {
     public Controller(Game game, Textures tex){
         this.game = game;
         this.tex = tex;
+    }
 
-            addEntitiy(new Bottles( r.nextInt(Game.WIDTH * Game.SCALE), 0, tex));
-
+    public void createBottles(int beerCount){
+        for (int i = 0; i < beerCount; i++) {
+            addEntitiy(new Bottles(r.nextInt(640), -10, tex));
+        }
     }
 
     public void tick(){
