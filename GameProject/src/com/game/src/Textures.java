@@ -13,9 +13,6 @@ public class Textures {
     }
 
     private void getTextures(){
-        //This part here needs to be fixed so we can find the image coordinates easier
-        //May be we have to use Bogomil`s video
-        //This part communicate with SpriteSheet.java
         player = ss.grabImage( 0, 0, 200, 222);
         bottles = ss.grabImage(200, 163, 40, 59);
     }
