@@ -17,10 +17,10 @@ public class Physics {
     }
 
     public static boolean Collision(EntityB entb, LinkedList<EntityA> enta){
-        //We have a bug here. The program doesn`t go into the loop
+        //We have a bug here. The program does`t go into the loop
 
         for (int i = 0; i < enta.size(); i++) {
-            if(entb.getBounds().intersects(enta.get(i).getBounds())){
+            if (entb.getBounds().intersects(enta.get(i).getBounds())) {
                 return true;
             }
         }

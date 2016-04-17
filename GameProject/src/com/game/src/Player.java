@@ -32,6 +32,10 @@ public class Player extends GameObject implements EntityA {
         if (x >= 640)
             x = 640;
 
+        if(Physics.Collision(this, game.eb)){
+            System.out.println("Collision");
+        }
+
     }
 
     public Rectangle getBounds() {

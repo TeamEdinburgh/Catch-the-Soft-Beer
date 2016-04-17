@@ -12,6 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
 
+import static java.awt.SystemColor.menu;
+
 public class Game extends Canvas implements Runnable{
 
       public static final int WIDTH = 800;
@@ -32,9 +34,18 @@ public class Game extends Canvas implements Runnable{
     private Player p;
     private Controller c;
     private Textures tex;
+    private Menu menu;
+
 
     public LinkedList<EntityA> ea;
     public LinkedList<EntityB> eb;
+
+    private enum STATE{
+        MENU,
+        GAME
+    };
+
+    private STATE State = STATE.MENU;
 
     public void init(){
         requestFocus();
@@ -50,6 +61,7 @@ public class Game extends Canvas implements Runnable{
 
         p = new Player(300,410, tex, this);
         c = new Controller(tex, this);
+        menu = new Menu();
 
         ea = c.getEntityA();
         eb = c.getEntityB();
@@ -116,9 +128,10 @@ public class Game extends Canvas implements Runnable{
     }
 
     public void tick(){
-
-        p.tick();
-        c.tick();
+        if(State == STATE.GAME) {
+            p.tick();
+            c.tick();
+        }
 
         if(beerCollected >= beerCount){
             beerCount += 2;
@@ -137,9 +150,12 @@ public class Game extends Canvas implements Runnable{
         g.drawImage(image, 0 ,0,getWidth(),getHeight(),this);
 
         g.drawImage(background, -150,-40,null);
-
-        p.render(g);
-        c.render(g);
+        if(State == STATE.GAME){
+            p.render(g);
+            c.render(g);
+        }else if (State == STATE.MENU){
+            menu.render(g);
+        }
             //////////////////////////////
 
         g.dispose();
@@ -147,12 +163,12 @@ public class Game extends Canvas implements Runnable{
     }
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_RIGHT){
-            p.setVelX(8);
-        }
-        else if (key == KeyEvent.VK_LEFT){
-            p.setVelX(-8);
+        if(State == STATE.GAME) {
+            if (key == KeyEvent.VK_RIGHT) {
+                p.setVelX(8);
+            } else if (key == KeyEvent.VK_LEFT) {
+                p.setVelX(-8);
+            }
         }
     }
 
