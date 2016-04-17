@@ -1,24 +1,24 @@
 package com.game.src;
 
 
+import EntityPack.EntityA;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Player {
-    private double x;
-    private double y;
+public class Player extends GameObject implements EntityA {
 
     private double velX = 0;
 
     private BufferedImage player;
+    private Game game;
 
     private Textures tex;
 
-    public Player(double x , double y, Textures tex){
-        this.x = x;
-        this.y = y;
-
-        this.tex= tex;
+    public Player(double x , double y, Textures tex, Game game){
+        super(x, y);
+        this.tex = tex;
+        this.game = game;
     }
 
 
@@ -31,6 +31,14 @@ public class Player {
         if (x >= 640)
             x = 640;
 
+        if(Physics.Collision(this, game.eb)){
+            System.out.println("Collision");
+        }
+
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle((int)x, (int)y, 300, 410);
     }
 
     public void render(Graphics g){

@@ -1,12 +1,16 @@
 package com.game.src;
 
 
+import EntityPack.EntityA;
+import EntityPack.EntityB;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.LinkedList;
 
 public class Game extends Canvas implements Runnable{
 
@@ -30,6 +34,8 @@ public class Game extends Canvas implements Runnable{
     private Controller c;
     private Textures tex;
 
+    public LinkedList<EntityA> ea;
+    public LinkedList<EntityB> eb;
 
     public void init(){
         requestFocus();
@@ -43,9 +49,12 @@ public class Game extends Canvas implements Runnable{
 
         tex = new Textures(this);
 
-        p = new Player(300,410, tex);
+        p = new Player(300,410, tex, this);
         b = new Bottles( 100, 100,tex);
         c = new Controller(this, tex);
+
+        ea = c.getEntityA();
+        eb = c.getEntityB();
 
         addKeyListener(new KeyInput(this));
 
