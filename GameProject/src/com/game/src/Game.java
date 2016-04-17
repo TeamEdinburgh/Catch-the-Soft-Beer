@@ -40,12 +40,12 @@ public class Game extends Canvas implements Runnable{
     public LinkedList<EntityA> ea;
     public LinkedList<EntityB> eb;
 
-    private enum STATE{
+    public static enum STATE{
         MENU,
         GAME
     };
 
-    private STATE State = STATE.MENU;
+    public static STATE State = STATE.MENU;
 
     public void init(){
         requestFocus();
@@ -66,7 +66,8 @@ public class Game extends Canvas implements Runnable{
         ea = c.getEntityA();
         eb = c.getEntityB();
 
-        addKeyListener(new KeyInput(this));
+        this.addKeyListener(new KeyInput(this));
+        this.addMouseListener(new MouseInput());
 
         c.createBottles(beerCount);
 
