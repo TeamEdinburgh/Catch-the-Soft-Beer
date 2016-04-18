@@ -40,7 +40,8 @@ public class Game extends Canvas implements Runnable{
     public LinkedList<EntityA> ea;
     public LinkedList<EntityB> eb;
 
-    public static int HEALTH = 100 * 2;
+    public static int HEALTH = 0;
+    public static int DROPPED = 200;
 
     public static enum STATE{
         MENU,
@@ -166,6 +167,16 @@ public class Game extends Canvas implements Runnable{
 
             g.setColor(Color.white);
             g.drawRect(5, 5, 200, 50);
+
+            //Dropped beers
+            g.setColor(Color.red);
+            g.fillRect(5, 60, 200, 50);
+
+            g.setColor(Color.blue);
+            g.fillRect(5, 60, DROPPED, 50);
+
+            g.setColor(Color.white);
+            g.drawRect(5, 60, 200, 50);
 
         }else if (State == STATE.MENU){
             menu.render(g);
