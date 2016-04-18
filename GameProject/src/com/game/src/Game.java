@@ -28,7 +28,7 @@ public class Game extends Canvas implements Runnable{
      private BufferedImage spriteSheet = null;
      private BufferedImage background = null;
 
-    private int beerCount = 10;
+    private int beerCount = 2;
     private int beerCollected = 0;
 
     private Player p;
@@ -39,6 +39,8 @@ public class Game extends Canvas implements Runnable{
 
     public LinkedList<EntityA> ea;
     public LinkedList<EntityB> eb;
+
+    public static int HEALTH = 100 * 2;
 
     public static enum STATE{
         MENU,
@@ -59,8 +61,9 @@ public class Game extends Canvas implements Runnable{
 
         tex = new Textures(this);
 
-        p = new Player(300,410, tex, this);
+
         c = new Controller(tex, this);
+        p = new Player(300,410, tex, this, c);
         menu = new Menu();
 
         ea = c.getEntityA();
@@ -154,6 +157,16 @@ public class Game extends Canvas implements Runnable{
         if(State == STATE.GAME){
             p.render(g);
             c.render(g);
+
+            g.setColor(Color.red);
+            g.fillRect(5, 5, 200, 50);
+
+            g.setColor(Color.green);
+            g.fillRect(5, 5, HEALTH, 50);
+
+            g.setColor(Color.white);
+            g.drawRect(5, 5, 200, 50);
+
         }else if (State == STATE.MENU){
             menu.render(g);
         }

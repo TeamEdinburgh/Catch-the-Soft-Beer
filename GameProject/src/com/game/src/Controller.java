@@ -66,18 +66,20 @@ public class Controller {
     }
 
     public void removeEntity (EntityA block){
-        ea.add(block);
+        ea.remove(block);
     }
 
     public void addEntity (EntityB block){
+
         eb.add(block);
     }
 
     public void removeEntity (EntityB block){
-        eb.add(block);
-    }
+        eb.remove(block);
+     }
 
     public LinkedList<EntityA> getEntityA(){
+
         return ea;
     }
     public LinkedList<EntityB> getEntityB(){

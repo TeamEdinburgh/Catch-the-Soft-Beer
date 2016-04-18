@@ -2,6 +2,7 @@ package com.game.src;
 
 
 import EntityPack.EntityA;
+import EntityPack.EntityB;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,16 +13,17 @@ public class Player extends GameObject implements EntityA {
 
     private BufferedImage player;
     private Game game;
-
+    private Controller controller;
 
     private Textures tex;
 
-    public Player(double x , double y, Textures tex, Game game){
+    public Player(double x , double y, Textures tex, Game game, Controller controller){
         super(x, y);
         this.tex = tex;
+        this.controller = controller;
         this.game = game;
-    }
 
+    }
 
     public void tick(){
         x += velX;
@@ -32,8 +34,14 @@ public class Player extends GameObject implements EntityA {
         if (x >= 640)
             x = 640;
 
-        if(Physics.Collision(this, game.eb)){
-            System.out.println("Collision");
+        for (int i = 0; i < game.eb.size(); i++) {
+            EntityB tempEnt = game.eb.get(i);
+
+            if (Physics.Collision(this, tempEnt)) {
+                controller.removeEntity(tempEnt);
+                Game.HEALTH -= 10;
+                game.setBeerCollected(game.getBeerCollected() + 1);
+            }
         }
 
     }

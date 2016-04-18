@@ -1,5 +1,6 @@
 package com.game.src;
 
+import EntityPack.EntityA;
 import EntityPack.EntityB;
 
 import java.awt.*;
@@ -30,14 +31,19 @@ public class Bottles extends GameObject implements EntityB {
             y = -10;
         }
 
-        if(Physics.Collision(this, game.ea)){
-            c.removeEntity(this);
-            game.setBeerCollected(game.getBeerCollected() + 1);
+        for (int i = 0; i < game.ea.size(); i++) {
+            EntityA tempEnt = game.ea.get(i);
+
+            if(Physics.Collision(this, tempEnt)){
+                c.removeEntity(tempEnt);
+                c.removeEntity(this);
+                game.setBeerCollected(game.getBeerCollected() + 1);
+            }
         }
+
     }
 
     public void render(Graphics g){
-
         g.drawImage(tex.bottles, (int) x, (int) y, null);
     }
 
