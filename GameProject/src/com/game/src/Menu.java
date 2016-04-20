@@ -5,9 +5,9 @@ import java.awt.*;
 public class Menu {
     Game game;
 
-    public Rectangle playButton = new Rectangle(Game.WIDTH / 2 + 120, 150, 100, 50);
-    public Rectangle helpButton = new Rectangle(Game.WIDTH / 2 + 120, 250, 100, 50);
-    public Rectangle quitButton = new Rectangle(Game.WIDTH / 2 + 120, 350, 100, 50);
+    public Rectangle playButton = new Rectangle(350, 200, 100, 50);
+    public Rectangle helpButton = new Rectangle(350, 300, 100, 50);
+    public Rectangle quitButton = new Rectangle(350, 400, 100, 50);
     public Rectangle playAgainButton = new Rectangle(300, 390, 200, 50);
 
     public Menu(Game game){
@@ -20,8 +20,8 @@ public class Menu {
         if(game.State == Game.STATE.MENU) {
             Font font = new Font("arial", Font.BOLD, 50);
             g.setFont(font);
-            g.setColor(Color.MAGENTA);
-            g.drawString("MENU", Game.WIDTH / 2, 100);
+            g.setColor(Color.orange);
+            g.drawString("MENU", 330, 100);
 
             Font font1 = new Font("arial", Font.BOLD, 30);
             g.setFont(font1);
