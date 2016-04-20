@@ -13,7 +13,7 @@ public class Bottles extends GameObject implements EntityB {
     private Controller c;
 
     private Textures tex;
-    private int speed = r.nextInt(3) + 1;
+    private int speed = r.nextInt(6) + 2;
 
     public Bottles (double x, double y, Textures tex, Controller c, Game game){
         super (x, y);
@@ -27,7 +27,7 @@ public class Bottles extends GameObject implements EntityB {
 
         if ( y > (Game.HEIGHT * Game.SCALE)){
             speed = r.nextInt(3) + 1;
-            x = r.nextInt((Game.WIDTH * Game.SCALE)-100);
+            x = r.nextInt((Game.WIDTH * Game.SCALE)-300);
             y = -10;
             Game.DROPPED -= 100;
         }
