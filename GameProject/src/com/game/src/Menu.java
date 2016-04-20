@@ -39,7 +39,7 @@ public class Menu {
 
             Font font1 = new Font("arial", Font.BOLD, 30);
             g.setFont(font1);
-            g.drawString("You Dropped too many,\nbut you collected: "+ game.getBeerCollected(), 100, 200);
+            g.drawString("You Dropped too many beers, but you collected: "+ game.getBeers(), 50, 200);
             g.drawString("Play Again", playAgainButton.x + 20, playAgainButton.y + 30);
             g2d.draw(playAgainButton);
         }

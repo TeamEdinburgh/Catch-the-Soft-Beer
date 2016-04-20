@@ -16,21 +16,23 @@ import static java.awt.SystemColor.menu;
 
 public class Game extends Canvas implements Runnable{
 
-      public static final int WIDTH = 800;
-      public static final int HEIGHT = 640;
-      public static final int SCALE = 1;
-      public final String TITLE = "Catch the beer";
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 640;
+    public static final int SCALE = 1;
+    public final String TITLE = "Catch the beer";
+    public int level = 1;
 
-      private boolean running = false;
-      private Thread thread;
+    private boolean running = false;
+    private Thread thread;
 
-     private BufferedImage image = new BufferedImage(WIDTH ,HEIGHT , BufferedImage.TYPE_3BYTE_BGR);
-     private BufferedImage spriteSheet = null;
-     private BufferedImage background = null;
+    private BufferedImage image = new BufferedImage(WIDTH ,HEIGHT , BufferedImage.TYPE_3BYTE_BGR);
+    private BufferedImage spriteSheet = null;
+    private BufferedImage background = null;
 
+    private int beers = 0;
     private int beerCount = 2;
     private int beerCollected = 0;
-    private int level = 1;
+
 
     private Player p;
     private Nakov n;
@@ -49,7 +51,6 @@ public class Game extends Canvas implements Runnable{
     public static enum STATE{
         MENU,
         GAME,
-        LEVEL,
         END
     };
 
@@ -159,6 +160,7 @@ public class Game extends Canvas implements Runnable{
             beerCollected = 0;
             c.createBottles(beerCount);
         }
+
     }
     public void render(){
         BufferStrategy bs  = this.getBufferStrategy();
@@ -251,6 +253,14 @@ public class Game extends Canvas implements Runnable{
     public BufferedImage getSpriteSheet(){
         return spriteSheet;
 
+    }
+
+    public int getBeers() {
+        return beers;
+    }
+
+    public void setBeers(int beers) {
+        this.beers = beers;
     }
 
     public int getBeerCount() {

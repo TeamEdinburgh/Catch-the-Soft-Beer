@@ -38,6 +38,7 @@ public class Bottles extends GameObject implements EntityB {
                 c.removeEntity(tempEnt);
                 c.removeEntity(this);
                 game.setBeerCollected(game.getBeerCollected() + 1);
+                game.setBeers(game.getBeers() + 1);
             }
         }
 

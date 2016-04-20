@@ -5,7 +5,6 @@ import EntityPack.EntityA;
 import EntityPack.EntityB;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class Player extends GameObject implements EntityA {
 
@@ -40,6 +39,7 @@ public class Player extends GameObject implements EntityA {
                 controller.removeEntity(tempEnt);
                 Game.COLLECTED += 10;
                 game.setBeerCollected(game.getBeerCollected() + 1);
+                game.setBeers(game.getBeers() + 1);
             }
         }
 
