@@ -214,9 +214,9 @@ public class Game extends Canvas implements Runnable{
         int key = e.getKeyCode();
         if(State == STATE.GAME) {
             if (key == KeyEvent.VK_RIGHT) {
-                p.setVelX(8);
+                p.setVelX(10);
             } else if (key == KeyEvent.VK_LEFT) {
-                p.setVelX(-8);
+                p.setVelX(-10);
             }
         }
     }
