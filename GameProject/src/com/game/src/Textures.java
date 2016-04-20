@@ -4,7 +4,7 @@ package com.game.src;
 import java.awt.image.BufferedImage;
 
 public class Textures {
-    public BufferedImage player, bottles;
+    public BufferedImage player, bottles, nakov;
     private  SpriteSheet ss;
 
     public Textures(Game game){
@@ -13,7 +13,8 @@ public class Textures {
     }
 
     private void getTextures(){
-        player = ss.grabImage( 0, 0, 200, 222);
-        bottles = ss.grabImage(200, 163, 40, 59);
+        player = ss.grabImage( 0, 0, 126, 170);
+        bottles = ss.grabImage(140, 130, 33, 50);
+        nakov = ss.grabImage(0, 178, 170, 125);
     }
 }

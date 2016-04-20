@@ -11,7 +11,6 @@ public class Player extends GameObject implements EntityA {
 
     private double velX = 0;
 
-    private BufferedImage player;
     private Game game;
     private Controller controller;
 
@@ -47,7 +46,7 @@ public class Player extends GameObject implements EntityA {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, 175, 200);
+        return new Rectangle((int)x, (int)y, 126, 170);
     }
 
     public void render(Graphics g){

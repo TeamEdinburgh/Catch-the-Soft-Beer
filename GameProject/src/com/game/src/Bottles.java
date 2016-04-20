@@ -27,10 +27,10 @@ public class Bottles extends GameObject implements EntityB {
 
         if ( y > (Game.HEIGHT * Game.SCALE)){
             speed = r.nextInt(3) + 1;
-            x = r.nextInt(Game.WIDTH * Game.SCALE);
+            x = r.nextInt((Game.WIDTH * Game.SCALE)-100);
             y = -10;
+            Game.DROPPED -= 100;
         }
-
         for (int i = 0; i < game.ea.size(); i++) {
             EntityA tempEnt = game.ea.get(i);
 
@@ -48,7 +48,7 @@ public class Bottles extends GameObject implements EntityB {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, 20, 50);
+        return new Rectangle((int)x, (int)y, 33, 50);
     }
 
     public double getY(){

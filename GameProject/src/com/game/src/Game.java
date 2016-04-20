@@ -32,6 +32,7 @@ public class Game extends Canvas implements Runnable{
     private int beerCollected = 0;
 
     private Player p;
+    private Nakov n;
     private Controller c;
     private Textures tex;
     private Menu menu;
@@ -41,7 +42,7 @@ public class Game extends Canvas implements Runnable{
     public LinkedList<EntityB> eb;
 
     public static int HEALTH = 0;
-    public static int DROPPED = 200;
+    public static int DROPPED = 300;
 
     public static enum STATE{
         MENU,
@@ -54,7 +55,7 @@ public class Game extends Canvas implements Runnable{
         requestFocus();
         BufferedImageLoader loader = new BufferedImageLoader();
         try {
-            spriteSheet = loader.loadImage("/Sprite.png");
+            spriteSheet = loader.loadImage("/Sprite1.png");
             background = loader.loadImage("/back2.png");
         }catch (IOException e){
             e.printStackTrace();
@@ -64,7 +65,8 @@ public class Game extends Canvas implements Runnable{
 
 
         c = new Controller(tex, this);
-        p = new Player(300,410, tex, this, c);
+        p = new Player(300,470, tex, this, c);
+        n = new Nakov(650, 200, tex, this, c);
         menu = new Menu();
 
         ea = c.getEntityA();
@@ -135,6 +137,7 @@ public class Game extends Canvas implements Runnable{
     public void tick(){
         if(State == STATE.GAME) {
             p.tick();
+            n.tick();
             c.tick();
         }
 
@@ -153,30 +156,30 @@ public class Game extends Canvas implements Runnable{
         Graphics g  = bs.getDrawGraphics();
             //////////////////////////////
         g.drawImage(image, 0 ,0,getWidth(),getHeight(),this);
-
         g.drawImage(background, -150,-40,null);
         if(State == STATE.GAME){
+            n.render(g);
             p.render(g);
             c.render(g);
 
             g.setColor(Color.red);
-            g.fillRect(5, 5, 200, 50);
+            g.fillRect(5, 5, 200, 30);
 
             g.setColor(Color.green);
-            g.fillRect(5, 5, HEALTH, 50);
+            g.fillRect(5, 5, HEALTH, 30);
 
             g.setColor(Color.white);
-            g.drawRect(5, 5, 200, 50);
+            g.drawRect(5, 5, 200, 30);
 
             //Dropped beers
             g.setColor(Color.red);
-            g.fillRect(5, 60, 200, 50);
+            g.fillRect(495, 5, 300, 30);
 
             g.setColor(Color.blue);
-            g.fillRect(5, 60, DROPPED, 50);
+            g.fillRect(495, 5, DROPPED, 30);
 
             g.setColor(Color.white);
-            g.drawRect(5, 60, 200, 50);
+            g.drawRect(495, 5, 300, 30);
 
         }else if (State == STATE.MENU){
             menu.render(g);

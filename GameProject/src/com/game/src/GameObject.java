@@ -11,6 +11,7 @@ public class GameObject {
     }
 
     public Rectangle getBounds(int width, int height) {
+
         return new Rectangle((int)x, (int)y, width, height);
     }
 }
