@@ -41,7 +41,7 @@ public class Game extends Canvas implements Runnable{
     public LinkedList<EntityA> ea;
     public LinkedList<EntityB> eb;
 
-    public static int HEALTH = 0;
+    public static int COLLECTED = 0;
     public static int DROPPED = 300;
 
     public static enum STATE{
@@ -141,6 +141,7 @@ public class Game extends Canvas implements Runnable{
             n.tick();
             c.tick();
             if(DROPPED <= 0){
+                COLLECTED = 0;
                 DROPPED = 300;
                 State = STATE.END;
             }
@@ -171,7 +172,7 @@ public class Game extends Canvas implements Runnable{
             g.fillRect(5, 5, 200, 30);
 
             g.setColor(Color.green);
-            g.fillRect(5, 5, HEALTH, 30);
+            g.fillRect(5, 5, COLLECTED, 30);
 
             g.setColor(Color.white);
             g.drawRect(5, 5, 200, 30);

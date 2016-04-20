@@ -38,7 +38,7 @@ public class Player extends GameObject implements EntityA {
 
             if (Physics.Collision(this, tempEnt)) {
                 controller.removeEntity(tempEnt);
-                Game.HEALTH += 10;
+                Game.COLLECTED += 10;
                 game.setBeerCollected(game.getBeerCollected() + 1);
             }
         }
