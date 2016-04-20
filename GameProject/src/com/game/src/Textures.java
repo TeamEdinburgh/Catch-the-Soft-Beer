@@ -4,7 +4,7 @@ package com.game.src;
 import java.awt.image.BufferedImage;
 
 public class Textures {
-    public BufferedImage player, bottles,nakov;
+    public BufferedImage player, bottles, nakov;
     private  SpriteSheet ss;
 
     public Textures(Game game){
