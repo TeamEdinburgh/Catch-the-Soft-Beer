@@ -8,7 +8,7 @@ public class Menu {
     public Rectangle playButton = new Rectangle(Game.WIDTH / 2 + 120, 150, 100, 50);
     public Rectangle helpButton = new Rectangle(Game.WIDTH / 2 + 120, 250, 100, 50);
     public Rectangle quitButton = new Rectangle(Game.WIDTH / 2 + 120, 350, 100, 50);
-    public Rectangle playAgainButton = new Rectangle(200, 350, 200, 50);
+    public Rectangle playAgainButton = new Rectangle(300, 390, 200, 50);
 
     public Menu(Game game){
         this.game = game;

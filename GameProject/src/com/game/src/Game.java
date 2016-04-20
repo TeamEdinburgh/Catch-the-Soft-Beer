@@ -30,6 +30,7 @@ public class Game extends Canvas implements Runnable{
 
     private int beerCount = 2;
     private int beerCollected = 0;
+    private int level = 1;
 
     private Player p;
     private Nakov n;
@@ -44,9 +45,11 @@ public class Game extends Canvas implements Runnable{
     public static int COLLECTED = 0;
     public static int DROPPED = 300;
 
+    //enum: a special data type that enables for a variable to be a set of predefined constants
     public static enum STATE{
         MENU,
         GAME,
+        LEVEL,
         END
     };
 
@@ -145,6 +148,10 @@ public class Game extends Canvas implements Runnable{
                 DROPPED = 300;
                 State = STATE.END;
             }
+            if(COLLECTED >= 200){
+                COLLECTED = 0;
+                level++;
+            }
         }
 
         if(beerCollected >= beerCount){
@@ -186,6 +193,11 @@ public class Game extends Canvas implements Runnable{
 
             g.setColor(Color.white);
             g.drawRect(495, 5, 300, 30);
+
+            Font font = new Font("arial", Font.BOLD, 50);
+            g.setFont(font);
+            g.setColor(Color.RED);
+            g.drawString("Level: " + level, 300, 50);
 
         }else if (State == STATE.MENU || State == STATE.END ){
             menu.render(g);
