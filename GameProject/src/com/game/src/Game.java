@@ -46,7 +46,8 @@ public class Game extends Canvas implements Runnable{
 
     public static enum STATE{
         MENU,
-        GAME
+        GAME,
+        END
     };
 
     public static STATE State = STATE.MENU;
@@ -67,7 +68,7 @@ public class Game extends Canvas implements Runnable{
         c = new Controller(tex, this);
         p = new Player(300,470, tex, this, c);
         n = new Nakov(650, 200, tex, this, c);
-        menu = new Menu();
+        menu = new Menu(this);
 
         ea = c.getEntityA();
         eb = c.getEntityB();
@@ -139,6 +140,10 @@ public class Game extends Canvas implements Runnable{
             p.tick();
             n.tick();
             c.tick();
+            if(DROPPED <= 0){
+                DROPPED = 300;
+                State = STATE.END;
+            }
         }
 
         if(beerCollected >= beerCount){
@@ -181,7 +186,7 @@ public class Game extends Canvas implements Runnable{
             g.setColor(Color.white);
             g.drawRect(495, 5, 300, 30);
 
-        }else if (State == STATE.MENU){
+        }else if (State == STATE.MENU || State == STATE.END ){
             menu.render(g);
         }
             //////////////////////////////
@@ -251,6 +256,7 @@ public class Game extends Canvas implements Runnable{
     }
 
     public void setBeerCollected(int beerCollected) {
+
         this.beerCollected = beerCollected;
     }
 

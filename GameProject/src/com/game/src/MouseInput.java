@@ -19,6 +19,7 @@ public class MouseInput implements MouseListener {
         //public Rectangle playButton = new Rectangle(Game.WIDTH / 2 + 120, 150, 100, 50);
         // public Rectangle helpButton = new Rectangle(Game.WIDTH / 2 + 120, 250, 100, 50);
         // public Rectangle quitButton = new Rectangle(Game.WIDTH / 2 + 120, 350, 100, 50);
+        //public Rectangle playAgainButton = new Rectangle(200, 350, 200, 50);
 
         //Play Button
         if(mx >= Game.WIDTH / 2 + 120 && mx <= Game.WIDTH / 2 + 220){
@@ -27,6 +28,15 @@ public class MouseInput implements MouseListener {
                 Game.State = Game.STATE.GAME;
             }
         }
+
+        //Play Again Button
+        if(mx >= 200 && mx <= 400){
+            if(my >= 350 && my <= 400){
+                //pressed Play button
+                Game.State = Game.STATE.GAME;
+            }
+        }
+
 
         //Quit Button
         if(mx >= Game.WIDTH / 2 + 120 && mx <= Game.WIDTH / 2 + 220){
