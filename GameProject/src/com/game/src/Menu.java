@@ -25,12 +25,25 @@ public class Menu {
 
             Font font1 = new Font("arial", Font.BOLD, 30);
             g.setFont(font1);
+
+            g.setColor(Color.blue);
+            g.fillRect(350, 200, 100, 50);
+            g.setColor(Color.orange);
             g.drawString("Play", playButton.x + 20, playButton.y + 30);
             g2d.draw(playButton);
+
+            g.setColor(Color.blue);
+            g.fillRect(350, 300, 100, 50);
+            g.setColor(Color.orange);
             g.drawString("Help", helpButton.x + 20, helpButton.y + 30);
             g2d.draw(helpButton);
+
+            g.setColor(Color.blue);
+            g.fillRect(350, 400, 100, 50);
+            g.setColor(Color.orange);
             g.drawString("Quit", quitButton.x + 20, quitButton.y + 30);
             g2d.draw(quitButton);
+
         }else if(game.State == Game.STATE.END){
             Font font = new Font("arial", Font.BOLD, 50);
             g.setFont(font);

@@ -169,7 +169,7 @@ public class Game extends Canvas implements Runnable{
             return;
         }
         Graphics g  = bs.getDrawGraphics();
-            //////////////////////////////
+            //////////////DRAWING////////////////
         g.drawImage(image, 0 ,0,getWidth(),getHeight(),this);
         g.drawImage(background, -150,-40,null);
         if(State == STATE.GAME){
@@ -177,6 +177,7 @@ public class Game extends Canvas implements Runnable{
             p.render(g);
             c.render(g);
 
+            //Collected beers bar
             g.setColor(Color.red);
             g.fillRect(5, 5, 200, 30);
 
@@ -186,7 +187,7 @@ public class Game extends Canvas implements Runnable{
             g.setColor(Color.white);
             g.drawRect(5, 5, 200, 30);
 
-            //Dropped beers
+            //Dropped beers bar
             g.setColor(Color.red);
             g.fillRect(495, 5, 300, 30);
 
