@@ -34,12 +34,12 @@ public class Bottles extends GameObject implements EntityB {
         for (int i = 0; i < game.ea.size(); i++) {
             EntityA tempEnt = game.ea.get(i);
 
-            if(Physics.Collision(this, tempEnt)){
-                c.removeEntity(tempEnt);
-                c.removeEntity(this);
-                game.setBeerCollected(game.getBeerCollected() + 1);
-                game.setBeers(game.getBeers());
-            }
+//            if(Physics.Collision(this, tempEnt)){
+//                c.removeEntity(tempEnt);
+//                c.removeEntity(this);
+//                game.setBeerCollected(game.getBeerCollected() + 1);
+//                game.setBeers(game.getBeers());
+//            }
         }
 
     }

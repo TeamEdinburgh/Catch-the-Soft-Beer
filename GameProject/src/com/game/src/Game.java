@@ -12,7 +12,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import static java.awt.SystemColor.menu;
 
 public class Game extends Canvas implements Runnable {
 
@@ -29,8 +28,6 @@ public class Game extends Canvas implements Runnable {
     private BufferedImage spriteSheet = null;
     private BufferedImage background = null;
     private BufferedImage beerPic = null;
-
-    private boolean allShitRestarts = false;
 
     private int beers = 0;
     private int beerCount = 2;

@@ -14,12 +14,11 @@ public class Physics {
         return false;
     }
 
-    public static boolean Collision(EntityB entb, EntityA enta){
-
-        if (entb.getBounds().intersects(enta.getBounds())) {
-            System.out.println("Sasd");
-            return true;
-        }
-        return false;
-    }
+//    public static boolean Collision(EntityB entb, EntityA enta){
+//
+//        if (entb.getBounds().intersects(enta.getBounds())) {
+//            return true;
+//        }
+//        return false;
+//    }
 }
