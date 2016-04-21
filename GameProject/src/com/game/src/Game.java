@@ -14,7 +14,7 @@ import java.util.LinkedList;
 
 import static java.awt.SystemColor.menu;
 
-public class Game extends Canvas implements Runnable{
+public class Game extends Canvas implements Runnable {
 
     public static final int WIDTH = 800;
     public static final int HEIGHT = 640;
@@ -25,9 +25,12 @@ public class Game extends Canvas implements Runnable{
     private boolean running = false;
     private Thread thread;
 
-    private BufferedImage image = new BufferedImage(WIDTH ,HEIGHT , BufferedImage.TYPE_3BYTE_BGR);
+    private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_3BYTE_BGR);
     private BufferedImage spriteSheet = null;
     private BufferedImage background = null;
+    private BufferedImage beerPic = null;
+
+    private boolean allShitRestarts = false;
 
     private int beers = 0;
     private int beerCount = 2;
@@ -39,30 +42,34 @@ public class Game extends Canvas implements Runnable{
     private Controller c;
     private Textures tex;
     private Menu menu;
+    private MenuEnd menuEnd;
 
 
     public LinkedList<EntityA> ea;
     public LinkedList<EntityB> eb;
 
     public static int COLLECTED = 0;
-    public static int DROPPED = 300;
+    public static int DROPPED = 400;
 
     //enum: a special data type that enables for a variable to be a set of predefined constants
-    public static enum STATE{
+    public static enum STATE {
         MENU,
         GAME,
         END
-    };
+    }
+
+    ;
 
     public static STATE State = STATE.MENU;
 
-    public void init(){
+    public void init() {
         requestFocus();
         BufferedImageLoader loader = new BufferedImageLoader();
         try {
             spriteSheet = loader.loadImage("/Sprite1.png");
             background = loader.loadImage("/back2.png");
-        }catch (IOException e){
+            beerPic = loader.loadImage("/beer.png");
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -70,9 +77,10 @@ public class Game extends Canvas implements Runnable{
 
 
         c = new Controller(tex, this);
-        p = new Player(300,470, tex, this, c);
+        p = new Player(300, 470, tex, this, c);
         n = new Nakov(650, 200, tex, this, c);
         menu = new Menu(this);
+        menuEnd = new MenuEnd(this);
 
         ea = c.getEntityA();
         eb = c.getEntityB();
@@ -83,8 +91,9 @@ public class Game extends Canvas implements Runnable{
         c.createBottles(beerCount);
 
     }
-    private synchronized void start(){
-        if(running)
+
+    private synchronized void start() {
+        if (running)
             return;
 
         running = true;
@@ -92,8 +101,8 @@ public class Game extends Canvas implements Runnable{
         thread.start();
     }
 
-    private synchronized void stop(){
-        if(!running)
+    private synchronized void stop() {
+        if (!running)
             return;
 
         running = false;
@@ -106,22 +115,25 @@ public class Game extends Canvas implements Runnable{
     }
 
 
-    public void run(){
+    public void run() {
         init();
         long lastTime = System.nanoTime();
-        final  double amountOFTicks = 60.0;
-        double ns = 1000000000 /amountOFTicks;
+        final double amountOFTicks = 60.0;
+        double ns = 1000000000 / amountOFTicks;
         double delta = 0;
         int updates = 0;
         int frames = 0;
         long timer = System.currentTimeMillis();
 
-        while (running){
+        while (running) {
+            if (State == STATE.END){
+
+            }
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
 
-            if (delta >= 1){
+            if (delta >= 1) {
                 tick();
                 updates++;
                 delta--;
@@ -129,9 +141,9 @@ public class Game extends Canvas implements Runnable{
             render();
             frames++;
 
-            if (System.currentTimeMillis() - timer > 1000){
+            if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println(updates + "Ticks ,FPs " +frames);
+                System.out.println(updates + "Ticks ,FPs " + frames);
                 updates = 0;
                 frames = 0;
             }
@@ -139,46 +151,47 @@ public class Game extends Canvas implements Runnable{
         stop();
     }
 
-    public void tick(){
-        if(State == STATE.GAME) {
+    public void tick() {
+        if (State == STATE.GAME) {
             p.tick();
             n.tick();
             c.tick();
-            if(DROPPED <= 0){
+            if (DROPPED <= 0) {
                 COLLECTED = 0;
                 DROPPED = 300;
                 State = STATE.END;
+                level = 1;
             }
-            if(COLLECTED >= 200){
+            if (COLLECTED >= 200) {
                 COLLECTED = 0;
                 level++;
             }
         }
 
-        if(beerCollected >= beerCount){
+        if (beerCollected >= beerCount) {
             beerCount += 2;
             beerCollected = 0;
             c.createBottles(beerCount);
         }
-
     }
-    public void render(){
-        BufferStrategy bs  = this.getBufferStrategy();
-        if(bs == null){
+
+    public void render() {
+        BufferStrategy bs = this.getBufferStrategy();
+        if (bs == null) {
             createBufferStrategy(3);
             return;
         }
-        Graphics g  = bs.getDrawGraphics();
-            //////////////DRAWING////////////////
-        g.drawImage(image, 0 ,0,getWidth(),getHeight(),this);
-        g.drawImage(background, -150,-40,null);
-        if(State == STATE.GAME){
+        Graphics g = bs.getDrawGraphics();
+        //////////////DRAWING////////////////
+        g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        g.drawImage(background, -150, -40, null);
+        if (State == STATE.GAME) {
             n.render(g);
             p.render(g);
             c.render(g);
 
             //Collected beers bar
-            g.setColor(Color.red);
+            g.setColor(Color.WHITE);
             g.fillRect(5, 5, 200, 30);
 
             g.setColor(Color.green);
@@ -187,36 +200,47 @@ public class Game extends Canvas implements Runnable{
             g.setColor(Color.white);
             g.drawRect(5, 5, 200, 30);
 
-            //Dropped beers bar
-            g.setColor(Color.red);
-            g.fillRect(495, 5, 300, 30);
-
-            g.setColor(Color.blue);
-            g.fillRect(495, 5, DROPPED, 30);
-
-            g.setColor(Color.white);
-            g.drawRect(495, 5, 300, 30);
-
-            Font font = new Font("arial", Font.BOLD, 50);
+            Font font = new Font("arial", Font.BOLD, 14);
             g.setFont(font);
-            g.setColor(Color.RED);
-            g.drawString("Level: " + level, 300, 50);
+            g.setColor(Color.WHITE);
+            g.drawString("Score :" + COLLECTED +  "/200" , 210, 20);
 
-        }else if (State == STATE.MENU || State == STATE.END ){
+            if (DROPPED == 400) {
+                g.drawImage(beerPic, 730, 140, null);
+                g.drawImage(beerPic, 700, 140, null);
+                g.drawImage(beerPic, 670, 140, null);
+            } else if (DROPPED == 300) {
+                g.drawImage(beerPic, 730, 140, null);
+                g.drawImage(beerPic, 700, 140, null);
+            } else if (DROPPED == 200) {
+                g.drawImage(beerPic, 700, 140, null);
+
+            }
+
+
+            font = new Font("arial", Font.BOLD, 50);
+            g.setFont(font);
+            g.setColor(Color.WHITE);
+            g.drawString(" Level: " + level, 300, 50);
+
+        } else if (State == STATE.MENU) {
             menu.render(g);
+        } else if (State == STATE.END) {
+            menuEnd.render(g);
         }
-            //////////////////////////////
+        //////////////////////////////
 
         g.dispose();
         bs.show();
     }
-    public void keyPressed(KeyEvent e){
+
+    public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        if(State == STATE.GAME) {
+        if (State == STATE.GAME) {
             if (key == KeyEvent.VK_RIGHT) {
-                p.setVelX(10);
+                p.setVelX(15);
             } else if (key == KeyEvent.VK_LEFT) {
-                p.setVelX(-10);
+                p.setVelX(-15);
             }
         }
     }
@@ -224,21 +248,20 @@ public class Game extends Canvas implements Runnable{
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_RIGHT){
+        if (key == KeyEvent.VK_RIGHT) {
             p.setVelX(0);
-        }
-        else if (key == KeyEvent.VK_LEFT){
+        } else if (key == KeyEvent.VK_LEFT) {
             p.setVelX(0);
         }
 
     }
 
-    public static void main (String args []){
+    public static void main(String args[]) {
         Game game = new Game();
 
-        game.setPreferredSize(new Dimension(WIDTH ,HEIGHT));
-        game.setMaximumSize(new Dimension(WIDTH ,HEIGHT));
-        game.setMinimumSize(new Dimension(WIDTH ,HEIGHT));
+        game.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        game.setMaximumSize(new Dimension(WIDTH, HEIGHT));
+        game.setMinimumSize(new Dimension(WIDTH, HEIGHT));
 
 
         JFrame frame = new JFrame(game.TITLE);
@@ -251,9 +274,9 @@ public class Game extends Canvas implements Runnable{
 
         game.start();
     }
-    public BufferedImage getSpriteSheet(){
-        return spriteSheet;
 
+    public BufferedImage getSpriteSheet() {
+        return spriteSheet;
     }
 
     public int getBeers() {
@@ -261,7 +284,7 @@ public class Game extends Canvas implements Runnable{
     }
 
     public void setBeers(int beers) {
-        this.beers = beers;
+            this.beers = beers;
     }
 
     public int getBeerCount() {
@@ -280,8 +303,6 @@ public class Game extends Canvas implements Runnable{
     }
 
     public void setBeerCollected(int beerCollected) {
-
         this.beerCollected = beerCollected;
     }
-
 }

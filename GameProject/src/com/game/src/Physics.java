@@ -16,9 +16,10 @@ public class Physics {
 
     public static boolean Collision(EntityB entb, EntityA enta){
 
-            if (entb.getBounds().intersects(enta.getBounds())) {
-                return true;
-            }
+        if (entb.getBounds().intersects(enta.getBounds())) {
+            System.out.println("Sasd");
+            return true;
+        }
         return false;
     }
 }

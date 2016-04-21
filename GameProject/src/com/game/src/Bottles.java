@@ -26,7 +26,7 @@ public class Bottles extends GameObject implements EntityB {
         y += speed;
 
         if ( y > (Game.HEIGHT * Game.SCALE)){
-            speed = r.nextInt(3) + 1;
+            speed = r.nextInt(5) + 3;
             x = r.nextInt((Game.WIDTH * Game.SCALE)-300);
             y = -10;
             Game.DROPPED -= 100;
@@ -38,7 +38,7 @@ public class Bottles extends GameObject implements EntityB {
                 c.removeEntity(tempEnt);
                 c.removeEntity(this);
                 game.setBeerCollected(game.getBeerCollected() + 1);
-                game.setBeers(game.getBeers() + 1);
+                game.setBeers(game.getBeers());
             }
         }
 
