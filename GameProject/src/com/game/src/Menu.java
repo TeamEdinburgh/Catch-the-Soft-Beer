@@ -28,12 +28,12 @@ public class Menu {
                 e.printStackTrace();
             }
 
-           // Font font = new Font("arial", Font.BOLD, 50);
-           // g.setFont(font);
-           // g.setColor(Color.orange);
-            // g.drawString("MENU", 330, 100);
+            Font font = new Font("consolas", Font.BOLD, 50);
+            g.setFont(font);
+            g.setColor(Color.orange);
+            g.drawString("Catch The Beer", 220, 100);
 
-            Font font1 = new Font("arial", Font.BOLD, 30);
+            Font font1 = new Font("consolas", Font.BOLD, 30);
             g.setFont(font1);
 
             g.drawImage(pic , 355,200,null);
