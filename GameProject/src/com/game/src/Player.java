@@ -29,8 +29,8 @@ public class Player extends GameObject implements EntityA {
         if (x <= -10)
             x = -10;
 
-        if (x >= 640)
-            x = 640;
+        if (x >= 550)
+            x = 550;
 
         for (int i = 0; i < game.eb.size(); i++) {
             EntityB tempEnt = game.eb.get(i);

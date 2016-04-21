@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41119f48-8fd6-4a63-ac65-d2fe60eeae5c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/game/src/Bottles.java" afterPath="$PROJECT_DIR$/src/com/game/src/Bottles.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/game/src/Player.java" afterPath="$PROJECT_DIR$/src/com/game/src/Player.java" />
     </list>
     <ignored path="GameProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,11 +24,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Bottles.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Bottles.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/game/src/Bottles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
+            <state relative-caret-position="340">
               <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/game/src/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,7 +125,6 @@
         <option value="$PROJECT_DIR$/src/com/game/src/NakovPics.java" />
         <option value="$PROJECT_DIR$/src/com/game/src/Textures.java" />
         <option value="$PROJECT_DIR$/src/com/game/src/NakovPicks.java" />
-        <option value="$PROJECT_DIR$/src/com/game/src/Player.java" />
         <option value="$PROJECT_DIR$/src/com/game/src/Nakov.java" />
         <option value="$PROJECT_DIR$/src/com/game/src/MouseInput.java" />
         <option value="$PROJECT_DIR$/src/com/game/src/Physics.java" />
@@ -122,6 +133,7 @@
         <option value="$PROJECT_DIR$/src/com/game/src/MenuEnd.java" />
         <option value="$PROJECT_DIR$/src/com/game/src/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/game/src/Bottles.java" />
+        <option value="$PROJECT_DIR$/src/com/game/src/Player.java" />
       </list>
     </option>
   </component>
@@ -728,13 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/game/src/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/EntityPack/EntityA.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -858,8 +863,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/game/src/Bottles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
+        <state relative-caret-position="340">
           <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/game/src/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
