@@ -7,6 +7,8 @@ import java.awt.*;
 import java.util.LinkedList;
 import java.util.Random;
 
+import static com.game.src.Game.State;
+
 public class Controller {
     private LinkedList<EntityA> ea = new LinkedList<EntityA>();
     private LinkedList<EntityB> eb = new LinkedList<EntityB>();
@@ -24,13 +26,14 @@ public class Controller {
     }
 
     public void createBottles(int beerCount){
-        for (int i = 0; i < beerCount; i++) {
-            addEntity(new Bottles(r.nextInt(640), -10, tex, this, game));
-        }
+                for (int i = 0; i < beerCount; i++) {
+                    addEntity(new Bottles(r.nextInt(640), -10, tex, this, game));
+                }
     }
 
     public void tick(){
         //Entity A CLASS
+
         for (int i = 0; i < ea.size(); i++) {
             enta = ea .get(i);
 

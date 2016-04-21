@@ -126,6 +126,9 @@ public class Game extends Canvas implements Runnable {
         long timer = System.currentTimeMillis();
 
         while (running) {
+            if (State == STATE.END){
+
+            }
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -170,7 +173,6 @@ public class Game extends Canvas implements Runnable {
             beerCollected = 0;
             c.createBottles(beerCount);
         }
-
     }
 
     public void render() {
@@ -189,7 +191,7 @@ public class Game extends Canvas implements Runnable {
             c.render(g);
 
             //Collected beers bar
-            g.setColor(Color.red);
+            g.setColor(Color.WHITE);
             g.fillRect(5, 5, 200, 30);
 
             g.setColor(Color.green);
@@ -198,23 +200,28 @@ public class Game extends Canvas implements Runnable {
             g.setColor(Color.white);
             g.drawRect(5, 5, 200, 30);
 
+            Font font = new Font("arial", Font.BOLD, 14);
+            g.setFont(font);
+            g.setColor(Color.WHITE);
+            g.drawString("Score :" + COLLECTED +  "/200" , 210, 20);
+
             if (DROPPED == 400) {
-                g.drawImage(beerPic, 700, 10, null);
-                g.drawImage(beerPic, 680, 10, null);
-                g.drawImage(beerPic, 660, 10, null);
+                g.drawImage(beerPic, 730, 140, null);
+                g.drawImage(beerPic, 700, 140, null);
+                g.drawImage(beerPic, 670, 140, null);
             } else if (DROPPED == 300) {
-                g.drawImage(beerPic, 700, 10, null);
-                g.drawImage(beerPic, 680, 10, null);
+                g.drawImage(beerPic, 730, 140, null);
+                g.drawImage(beerPic, 700, 140, null);
             } else if (DROPPED == 200) {
-                g.drawImage(beerPic, 700, 10, null);
+                g.drawImage(beerPic, 700, 140, null);
 
             }
 
 
-            Font font = new Font("arial", Font.BOLD, 50);
+            font = new Font("arial", Font.BOLD, 50);
             g.setFont(font);
-            g.setColor(Color.RED);
-            g.drawString("Level: " + level, 300, 50);
+            g.setColor(Color.WHITE);
+            g.drawString(" Level: " + level, 300, 50);
 
         } else if (State == STATE.MENU) {
             menu.render(g);
@@ -270,7 +277,6 @@ public class Game extends Canvas implements Runnable {
 
     public BufferedImage getSpriteSheet() {
         return spriteSheet;
-
     }
 
     public int getBeers() {
@@ -278,7 +284,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void setBeers(int beers) {
-        this.beers = beers;
+            this.beers = beers;
     }
 
     public int getBeerCount() {
@@ -297,7 +303,6 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void setBeerCollected(int beerCollected) {
-
         this.beerCollected = beerCollected;
     }
 }

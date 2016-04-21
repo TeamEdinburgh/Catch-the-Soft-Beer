@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.EventListener;
 
+import static com.game.src.Game.DROPPED;
 import static com.game.src.Game.State;
 
 public class MouseInput implements MouseListener {
@@ -44,6 +45,7 @@ public class MouseInput implements MouseListener {
                 if (my >= 400 && my <= 450) {
                     //pressed Play button
                     State = Game.STATE.GAME;
+                    DROPPED = 400;
 
                 }
             }
