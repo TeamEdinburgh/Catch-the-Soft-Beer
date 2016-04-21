@@ -29,7 +29,7 @@ public class MenuEnd {
 
         BufferedImageLoader loader = new BufferedImageLoader();
         try {
-            pic = loader.loadImage("/playagain.png.png");
+            pic = loader.loadImage("/playagain.png");
         }catch (IOException e){
             e.printStackTrace();
         }
